@@ -1,0 +1,13 @@
+{
+  "version": "1",
+  "name": "Lms System",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ],
+  "presets": {
+    "requestType": "http",
+    "requestUrl": "http://lms_system.test"
+  }
+}

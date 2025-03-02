@@ -1,0 +1,39 @@
+meta {
+  name: Store student
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://lms_system.test/admin/student/create
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 1|dA2mnOqMZeyhLbABRi717TuNZeq28HmD8gCpHbnDe947f40b
+}
+
+body:json {
+  {
+    "username":"",
+    "email":"",
+    "password":"",
+    "address":"",
+    "name":"",
+    "name":"",
+    
+  }
+}
+
+body:multipart-form {
+  username: Student2
+  email: studen2t@gmail.com
+  password: Makemesmile123
+  address: Miami
+  avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
+  payment_method: instalment
+  parent_phone: 3913491439
+  subscription: 5
+  category: الاول الثانوي
+}

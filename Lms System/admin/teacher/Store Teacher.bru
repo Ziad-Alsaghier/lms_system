@@ -1,0 +1,37 @@
+meta {
+  name: Store Teacher
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://lms_system.test/admin/teacher/create
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 1|dA2mnOqMZeyhLbABRi717TuNZeq28HmD8gCpHbnDe947f40b
+}
+
+body:json {
+  {
+    "username":"",
+    "email":"",
+    "password":"",
+    "address":"",
+    "name":"",
+    "name":"",
+    
+  }
+}
+
+body:multipart-form {
+  username: Teacher
+  email: teacher@gmail.com
+  password: Makemesmile123
+  phone: 01099475854
+  address: Miami
+  avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
+  subject_id: 1
+}

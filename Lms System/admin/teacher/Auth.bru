@@ -1,0 +1,21 @@
+meta {
+  name: Auth
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://lms_system.test/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email":"teacher@gmail.com",
+    "password":"Makemesmile123"
+  
+  
+  }
+  
+}

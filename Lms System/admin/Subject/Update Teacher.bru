@@ -1,0 +1,32 @@
+meta {
+  name: Update Teacher
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://lms_system.test/admin/subject/update/1
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 1|dA2mnOqMZeyhLbABRi717TuNZeq28HmD8gCpHbnDe947f40b
+}
+
+body:json {
+  {
+    "username":"",
+    "email":"",
+    "password":"",
+    "address":"",
+    "name":"",
+    "name":"",
+    
+  }
+}
+
+body:multipart-form {
+  name: Arabic
+  status: active
+}

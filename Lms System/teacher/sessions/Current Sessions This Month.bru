@@ -1,0 +1,15 @@
+meta {
+  name: Current Sessions This Month
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://lms_system.test/teacher/session/current
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 2|ektz13szaawsTiRlmamkUBEhVPtQCZPkefURtmDH45f62d05
+}

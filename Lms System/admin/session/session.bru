@@ -1,0 +1,30 @@
+meta {
+  name: session
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://lms_system.test/admin/session/update/1
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 1|dA2mnOqMZeyhLbABRi717TuNZeq28HmD8gCpHbnDe947f40b
+}
+
+body:multipart-form {
+  student_id: 4
+  teacher_id: 2
+  day: Sunday
+  start: 11:30
+  end: 12:30
+  payment_method: paid
+  subject_id: 1
+  duration: 20
+  category: 
+  status: pending
+  active: active
+  price: 23
+}
