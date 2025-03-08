@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
             'role'=>['sometime','string', 'in:teacher,admin', 'default:student'],
             'address'=>['required','string'],
             'parent_phone'=>['required','string'],
-            'payment_method'=>['required','string', 'in:instalment,paid,unpaid'],
+            'payment_method'=>['required','string', 'in:0,1,2'],
             'category'=>['required','string'],    
             'sessionCount'=>['sometimes','integer'],
             'subscription'=>['required','string'],  

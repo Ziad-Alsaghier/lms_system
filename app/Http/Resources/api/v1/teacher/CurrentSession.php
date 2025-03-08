@@ -18,6 +18,10 @@ class CurrentSession extends JsonResource
          parent::toArray($request);
         return [
             'Session_id' => $this->id,
+            'start' => $this->start,
+            'end' => $this->end,
+            'subject' => $this->subject->name,
+            'active' => $this->active,
             'student' => new Student($this->student) ,
             'teacher' => $this->teacher,
             'status' => $this->status,

@@ -31,6 +31,7 @@ class UpdateRequest extends FormRequest
                'role'=>['sometimes','string', 'in:teacher,admin', 'default:admin'],
                'phone'=>['sometimes','min:6'],
                'address'=>['sometimes','string'],
+               'status'=>['sometimes','in:active,inactive'],
         ];
     }
 }

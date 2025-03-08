@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Resources\api\v1\teacher\CurrentSession;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -93,4 +96,44 @@ class User extends Authenticatable
                 ? asset('storage/' . $this->avatar)
                 : asset('storage/avatars/default.png'); // Default avatar
         }
+ 
+        public function subject()
+        {
+            return $this->belongsTo(Subject::class);
+        }
+        public function teacherSessions()
+        {
+            return $this->hasMany(SessionClass::class, 'teacher_id')->whereNotNull('start')->whereNotNull('end');
+        }
+        public function studentSessions()
+        {
+            return $this->hasMany(SessionClass::class, 'student_id')->whereNotNull('start')->whereNotNull('end');
+        }
+
+        public function getCurrentMonthSessions()
+    {
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        $sessions = $this->teacherSessions()
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->get();
+
+        $daysWithSessions = [];
+
+        for ($date = $startOfMonth; $date->lte($endOfMonth); $date->addDay()) {
+            $day = $date->format('Y-m-d');
+
+            $daySessions = $sessions->where('date', $day);
+
+            $daysWithSessions[] = [
+                'date' => $day,
+                'sessions' => $daySessions->isNotEmpty()
+                    ? CurrentSession::collection($daySessions)
+                    : "You don't have a session on this day",
+            ];
+        }
+
+        return $daysWithSessions;
+    }
 }

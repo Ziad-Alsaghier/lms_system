@@ -56,6 +56,54 @@ class SessionController extends Controller
         return response()->json($sessions);
     }
 
+    public function startSession(Request $request, $sessionId)
+    {
+        $teacherId = $request->user()->id;
+        $session = $this->sessionClass::where('teacher_id', $teacherId)
+            ->where('id', $sessionId)
+            ->where('date', Carbon::now('Africa/Cairo')->format('Y-m-d'))
+            ->first();
+      
+        if ($session) {
+            $session->status = 'processing';
+            $session->start = Carbon::now('Africa/Cairo')->format('H:i:s');
+            $session->save();
+            return response()->json([
+                'message' => 'Session started.',
+                'session' => $session
+            ]);
+        }
+
+        return response()->json(['error' => 'Session not found.'], 404);
+    }
+
+    public function endSession(Request $request, $sessionId)
+    {
+        $teacherId = $request->user()->id;
+        $session = $this->sessionClass::where('teacher_id', $teacherId)
+            ->where('id', $sessionId)
+            ->where('date', Carbon::now('Africa/Cairo')->format('Y-m-d'))
+            ->first();
+                $timeEndSession = $session->start ?? Null ;
+                    $timeEndSession = Carbon::parse($timeEndSession)->addHour()->format('H:i:s');
+                    if ($timeEndSession > Carbon::now('Africa/Cairo')->format('H:i:s')){
+                        return response()->json(['error' => 'Session cannot be ended before an hour.'], 400);
+                    }   
+                if ($session) {
+            $session->status = 'done';
+            $session->end = Carbon::now('Africa/Cairo')->format('H:i:s');
+            $session->save();
+            return response()->json(
+                [
+                    'message' => 'Session ended.',
+                    'session' => $session
+
+            ]);
+        }
+
+        return response()->json(['error' => 'Session not found.'], 404);
+    }
+
 
     /**
      * Update the session status to 'Processing'.

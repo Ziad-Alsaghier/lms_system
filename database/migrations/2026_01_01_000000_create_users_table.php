@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum( 'role',['admin','teacher','student'])->default('teacher'); // this field for role
             $table->string('parent_phone')->nullable();
             $table->string('category')->nullable(); // this field for category   
-            $table->enum('payment_method',['instalment','paid','unpaid'])->nullable(); // this field for payment method
+    $table->enum('payment_method', ['0', '1', '2'])->nullable(); // 0:تقسيط لم يتم الدفع, 1: تم الدفع, 2:
             $table->enum('status',['active','inactive'])->default('active'); // this field for status
             $table->foreignId('subject_id')->nullable()->constrained('subjects')->onDelete('cascade');
             $table->string('sessionCount')->default(0); // this field for session count

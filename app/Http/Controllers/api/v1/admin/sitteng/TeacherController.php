@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1\admin\sitteng;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\teacher\StoreRequest;
 use App\Http\Requests\api\v1\admin\teacher\UpdateRequest;
+use App\Http\Resources\api\v1\admin\TeacherResource;
 use App\Models\User;
 use App\services\Image;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class TeacherController extends Controller
         if (!$user or $user->role != 'teacher') {
             return response()->json([
                 'status' => 'error',
-                'message' => 'user Not Found Or This User Not Teacher'
+                'message' => $user ? 'User Not Teacher' : 'User Not Found'
             ], );
         }
         if ($request->hasFile('avatar')) {
@@ -50,7 +51,7 @@ class TeacherController extends Controller
         $user->update($data);
         return response()->json([
             'status' => 'success',
-            'message' => 'Teacher Updated Successfully'
+            'message' => $user
         ], 200);
     }
     // This Function For Delete Teacher
@@ -80,7 +81,7 @@ class TeacherController extends Controller
     {
         // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher
         $teacher = $this->user->where('role', 'teacher')->get();
-
+            $teacher = TeacherResource::collection($teacher);
         return response()->json([
             'status' => 'success',
             'data' => $teacher

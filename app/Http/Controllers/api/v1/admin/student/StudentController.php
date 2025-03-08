@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1\admin\student;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\student\StoreRequest;
 use App\Http\Requests\api\v1\admin\student\UpdateReques;
+use App\Http\Resources\api\v1\admin\StudentResource;
 use App\Models\User;
 use App\services\Image;
 // use Illuminate\Http\Request;
@@ -79,11 +80,11 @@ class StudentController extends Controller
     public function show()
     {
         // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher
-        $teacher = $this->user->where('role', 'teacher')->get();
-
+        $student = $this->user->where('role', 'student')->get();
+            $student = StudentResource::collection($student);
         return response()->json([
             'status' => 'success',
-            'data' => $teacher
+            'data' => $student
         ], 200);
     }
 }

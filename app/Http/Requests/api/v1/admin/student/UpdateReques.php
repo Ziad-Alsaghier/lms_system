@@ -31,8 +31,9 @@ class UpdateReques extends FormRequest
               'phone'=>['sometimes','min:6'],
               'address'=>['sometimes','string'],
               'parent'=>['sometimes','string'],
-              'payment_method'=>['sometimes','string', 'in:instalment,paid,unpaid'],
+             'payment_method' => ['sometimes', 'string', 'in:0,1,2'],
               'age'=>['sometimes','integer'],
+              'status'=>['sometimes','string', 'in:active,inactive', 'default:active'],
         ];
     }
 }

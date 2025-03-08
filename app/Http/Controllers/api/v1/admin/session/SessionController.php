@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1\admin\session;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\session\SessionClassRequest;
+use App\Http\Resources\api\v1\session\SessionResource;
 use App\Models\SessionClass;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class SessionController extends Controller
     {
         // URL : http://localhost/lms_system/public/api/v1/admin/session
         $sessions = $this->sessionClass->with('student', 'teacher')->get();
+            $sessions = SessionResource::collection($sessions);
         return response()->json([
             'status' => 'success',
             'data' => $sessions

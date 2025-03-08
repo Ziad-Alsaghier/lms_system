@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
     Route::prefix('teacher')->group(function () {
         Route::post('/create', [TeacherController::class, 'store']); // Create: /teacher/create
-        // Route::get('/show/{id}', [TeacherController::class, 'show']); // Read: /teacher/show/{id}
+        Route::get('/show', [TeacherController::class, 'show']); // Read: /teacher/show/{id}
         Route::post('/update/{user}', [TeacherController::class, 'update']); // Update: /teacher/update/{user}
         Route::delete('/delete/{id}', [TeacherController::class, 'destroy']); // Delete: /teacher/delete/{id}
     });
 
     Route::prefix('student')->group(function () {
         Route::post('/create', [StudentController::class, 'store']); // Create: /student/create
-        // Route::get('/show/{id}', [StudentController::class, 'show']); // Read: /student/show/{id}
+        Route::get('/show', [StudentController::class, 'show']); // Read: /student/show/{id}
         Route::post('/update/{user}', [StudentController::class, 'update']); // Update: /student/update/{user}
         Route::delete('/delete/{id}', [StudentController::class, 'destroy']); // Delete: /student/delete/{id}
     });

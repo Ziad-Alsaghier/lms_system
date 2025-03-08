@@ -32,15 +32,17 @@ class AuthController extends Controller
          $check = Auth::attempt($credentials);
         if ($check) { // Start Check Credentials
             $user = $this->user->where('email', $credentials['email'])->first(); // Get Current User Login
-            $user->generateToken($user); // Genrate Token
+            $token = $user->generateToken($user); // Genrate Token
+            
             // Message Success
             $avatar = $user->avatar;
             $user->avatar = $user->getAvatarUrl();
-            
+                $user = $this->userResourse($user)->withToken($token);;
                 
             return response()->json([
                 'auth.success' => 'Login Successfully',
                 'user' => $user,
+                
             ]);
                 
             // Message Success

@@ -29,10 +29,10 @@ class StoreRequest extends FormRequest
             // This Function For Create Teacher
             'username'=>['required','string', 'unique:users,username'],
             'email'=>['required','email', 'unique:users,email'],
-            'password'=>['required','min:6'],
+            'password'=>['required','min:3'],
             'avatar' => ['nullable', 'image', 'max:2048'],
             'role'=>['sometime','string', 'in:teacher,admin', 'default:admin'],
-            'phone'=>['required','min:6'],
+            'phone'=>['required','min:3'],
             'address'=>['required','string'],
             'subject_id'=>['required','exists:subjects,id'],
             'status'=>['sometimes','string', 'in:active,inactive', 'default:active'],
