@@ -1,0 +1,19 @@
+meta {
+  name: production Auth
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://alghars.net/api/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email":"alghars@gmail.com",
+    "password":"123"
+  }
+  
+}

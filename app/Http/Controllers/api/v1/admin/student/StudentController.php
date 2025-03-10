@@ -21,18 +21,20 @@ class StudentController extends Controller
     // This Function For Create Student
     public function store(StoreRequest $request)
     {
-        // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher
-        $data = $request->validated();
-        if ($request->hasFile('avatar')) {
-            $data['avatar'] = $this->uploadImage($request->file('avatar'), 'avatars/');
-        }   
-        $data['role'] = 'student';
-        $teacher = $this->user->create($data);
-        $teacher->avatar = $teacher->getAvatarUrl();
-        return response()->json([
-            'status' => 'success',
-            'data' => $teacher
-        ], 201);
+    $data = $request->validated();
+
+    if ($request->hasFile('avatar')) {
+    $data['avatar'] = $this->uploadImage($request->file('avatar'), 'avatars/');
+    }
+
+    $data['role'] = 'student';
+    $teacher = $this->user->create($data);
+    $teacher->avatar = $teacher->getAvatarUrl();
+
+    return response()->json([
+    'status' => 'success',
+    'data' => $teacher,
+    ], 201);
     }
     public function update(UpdateReques $request, User $user)
     {

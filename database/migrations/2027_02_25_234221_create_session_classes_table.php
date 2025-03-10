@@ -23,7 +23,7 @@ return new class extends Migration
             $table->time('end')->nullable();
             $table->enum('status', ['pending', 'processing', 'done', 'cancelled'])->default('pending');
             $table->enum('active', ['active', 'inactive'])->default('active');
-            $table->enum('payment_method', ['instalment', 'paid', 'unpaid'])->default('unpaid');
+            // $table->enum('payment_method', ['instalment', 'paid', 'unpaid'])->default('unpaid');
             // $table->integer('price');
             $table->timestamps();
         });

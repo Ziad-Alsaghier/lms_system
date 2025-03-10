@@ -31,11 +31,11 @@ class StoreRequest extends FormRequest
             'email'=>['required','email', 'unique:users,email'],
             'password'=>['required','min:3'],
             'avatar' => ['nullable', 'image', 'max:2048'],
-            'role'=>['sometime','string', 'in:teacher,admin', 'default:admin'],
+            'role'=>['sometimes','string', 'in:teacher,admin', 'default:teacher'],
             'phone'=>['required','min:3'],
             'address'=>['required','string'],
             'subject_id'=>['required','exists:subjects,id'],
-            'status'=>['sometimes','string', 'in:active,inactive', 'default:active'],
+            'status'=>['sometimes','string', 'in:active,inactive'],
         ];
     }
 

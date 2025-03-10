@@ -1,17 +1,17 @@
 meta {
-  name: Store Teacher
+  name: Store Teacher production
   type: http
-  seq: 2
+  seq: 6
 }
 
 get {
-  url: http://lms_system.test/admin/teacher/create
+  url: https://alghars.net/admin/teacher/show
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 1|GRXocPbsm7Go5ZjCe6JkuN2Zyjip8LW2fTHBMiAT6692694d
+  token: 12|1MvgGdX5WYIRP582X3EipJpsrPrYvaYoALJT00BC977080ba
 }
 
 body:json {
@@ -27,9 +27,9 @@ body:json {
 }
 
 body:multipart-form {
-  username: ahmed
-  email: ahmed@gmail.com
-  password: 1234
+  username: alghars
+  email: alghars@gmail.com
+  password: 123
   phone: 01099475854
   address: Miami
   avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
