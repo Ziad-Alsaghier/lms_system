@@ -3,6 +3,7 @@
 namespace App\Http\Resources\api\v1\admin;
 
 use App\Http\Resources\api\v1\teacher\CurrentSession;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -40,5 +41,36 @@ class TeacherResource extends JsonResource
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
         ];
+    }
+
+    public function getCurrentMonthSessions()
+    {
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        $sessions = $this->teacherSessions()
+            ->whereBetween('date', [$startOfMonth->toDateString(), $endOfMonth->toDateString()])
+            ->get();
+
+        $daysWithSessions = [];
+
+        // Ensure Carbon date copying to avoid mutation issues
+        for ($date = $startOfMonth->copy(); $date->lte($endOfMonth); $date->addDay()) {
+            $day = $date->format('Y-m-d');
+            
+            // Match using Carbon to prevent format mismatch
+            $daySessions = $sessions->filter(function ($session) use ($day) {
+                return Carbon::parse($session->date)->format('Y-m-d') == $day;
+            });
+
+            $daysWithSessions[] = [
+                'date' => $day,
+                'sessions' => $daySessions->isNotEmpty()
+                    ? CurrentSession::collection($daySessions)
+                    : "You don't have a session on this day",
+            ];
+        }
+
+        return $daysWithSessions;
     }
 }

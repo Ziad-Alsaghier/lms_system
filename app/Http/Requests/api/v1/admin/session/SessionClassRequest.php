@@ -29,7 +29,6 @@ class SessionClassRequest extends FormRequest
             'day'=>['required', 'string', 'in:Saturday,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday'],
             'duration'=>['required', 'integer'],
             'status'=>['sometimes', 'string', 'in:pending,processing,done,cancelled'],
-            'payment_method'=>['required'],
             'subject_id'=>['required', 'exists:subjects,id'],
             'active' => ['sometimes', 'string', 'in:active,inactive'],
             'price'=>['required', 'numeric'],
