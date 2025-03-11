@@ -37,6 +37,7 @@ class StoreRequest extends FormRequest
             'subscription'=>['sometimes','string'],  
             'status'=>['sometimes','string', 'in:active,inactive'],
             'package_id'=>['sometimes', 'exists:packages,id'],
+            'sessionsLimite'=>['sometimes', 'integer'],
             // 'phone'=>['required','min:6'],
             // 'age'=>['required','integer'],
             // 'email'=>['required','email', 'unique:users,email'],

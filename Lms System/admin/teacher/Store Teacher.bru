@@ -4,14 +4,14 @@ meta {
   seq: 2
 }
 
-get {
-  url: http://lms_system.test/admin/student/show
+post {
+  url: http://lms_system.test/admin/teacher/create
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 3|56WKNIXhGK210Cx00KWhCYsEK9ilhqHgRmOfpLPE1eef2f50
+  token: 1|JeKbucXiBXHX4jLBYm3fdE95ZTS0Tfe1AfwBtpyxd4ae68ba
 }
 
 body:json {
@@ -33,5 +33,4 @@ body:multipart-form {
   phone: 01099475854
   address: Miami
   avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
-  subject_id: 1
 }

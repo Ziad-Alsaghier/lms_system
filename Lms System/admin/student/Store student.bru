@@ -4,14 +4,14 @@ meta {
   seq: 1
 }
 
-get {
-  url: http://lms_system.test/admin/teacher/show
+post {
+  url: http://lms_system.test/admin/student/create
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 2|jxmk5UKlwKeFyqPwqFOGmqv6UpPKOMgWZ9nzvGe15a05887a
+  token: 1|JeKbucXiBXHX4jLBYm3fdE95ZTS0Tfe1AfwBtpyxd4ae68ba
 }
 
 body:json {
@@ -33,7 +33,7 @@ body:multipart-form {
   password: Makemesmile123
   address: Miami
   avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
-  payment_method: instalment
+  payment_method: 0
   parent_phone: 3913491439
   subscription: 5
   category: الاول الثانوي

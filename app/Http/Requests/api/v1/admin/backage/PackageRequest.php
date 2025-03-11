@@ -26,7 +26,7 @@ class PackageRequest extends FormRequest
     {
         return [
             // This Is All Name Request 
-            'name'=>['sometimes'],
+            'name'=>['required'],
             'sessionCount'=>['sometimes'],
             'price'=>['sometimes'],
             'status' => ['sometimes', 'string', 'in:active,inactive'],

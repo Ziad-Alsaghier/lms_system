@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\api\v1\teacher\profile;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\api\v1\admin\teacher\ProfileUpdate;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -26,11 +28,19 @@ class ProfileController extends Controller
 
     // This Function For Update Teacher Profile
 
-    public function update(Request $request)
+    public function update(ProfileUpdate $request)
     {
         // URL : http://localhost/lms_system/public/api/v1/teacher/profile
         $teacher = $request->user();
-        $data = $request->all();
+        $data = $request->validated();
+            if ($request->filled('password')) {
+        if (Hash::check($request->password, $teacher->password)) {
+            return back()->withErrors(['password' => 'The new password cannot be the same as the current password.']);
+        }
+        // Update password if it's different
+    } else {
+        unset($data['password']); // Remove password from update if not provided
+    }
         $teacher->update($data);
         return response()->json([
             'status' => 'success',

@@ -26,9 +26,9 @@ return new class extends Migration
             $table->string('category')->nullable(); // this field for category   
     $table->enum('payment_method', ['0', '1', '2'])->nullable(); // 0:تقسيط لم يتم الدفع, 1: تم الدفع, 2:
             $table->enum('status',['active','inactive'])->default('active'); // this field for status
-            $table->foreignId('subject_id')->nullable()->constrained('subjects')->onDelete('cascade');
+            $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');
             $table->string('sessionCount')->default(0); // this field for session count
-            $table->string('subsciption')->nullable(); // this field for subscription
+            $table->string('sessionsLimite')->nullable(); // this field for subscription
             $table->rememberToken();
             $table->timestamps();
         });

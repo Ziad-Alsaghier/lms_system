@@ -11,7 +11,7 @@ class SessionClass extends Model
     protected $fillable = [
             'student_id',
             'teacher_id',
-            'subject_id',
+            'package_id',
             'date',
             'start',
             'end',
@@ -30,9 +30,6 @@ class SessionClass extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class, 'subject_id');
-    }
+   
 
 }

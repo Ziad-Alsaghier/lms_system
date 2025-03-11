@@ -34,7 +34,6 @@ class StoreRequest extends FormRequest
             'role'=>['sometimes','string', 'in:teacher,admin', 'default:teacher'],
             'phone'=>['required','min:3'],
             'address'=>['required','string'],
-            'subject_id'=>['required','exists:subjects,id'],
             'status'=>['sometimes','string', 'in:active,inactive'],
         ];
     }
