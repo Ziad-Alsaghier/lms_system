@@ -24,7 +24,8 @@ class UpdateReques extends FormRequest
     {
         return [
             // This Function For Update Student
-              'username'=>['sometimes','string', 'unique:users,username'],
+              'name'=>['sometimes','string', 'unique:users,
+              '],
               'email'=>['sometimes','email', 'unique:users,email'],
               'avatar' => ['nullable', 'image', 'max:2048'],
               'role'=>['sometime','string', 'in:teacher,admin', 'default:student'],

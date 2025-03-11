@@ -24,7 +24,7 @@ class ProfileUpdate extends FormRequest
     {
         return [
             //
-             'username'=>['required','string', 'unique:users,username'],
+             'name'=>['required','string', 'unique:users,name'],
              'email'=>['required','email', 'unique:users,email'],
              'password'=>['sometimes','min:3'],
              'avatar' => ['nullable', 'image', 'max:2048'],

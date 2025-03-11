@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
             $table->date('date')->nullable();
-            $table->integer('price')->default(0);
             $table->time('start')->nullable();
             $table->time('end')->nullable();
             $table->enum('status', ['pending', 'processing', 'done', 'cancelled'])->default('pending');

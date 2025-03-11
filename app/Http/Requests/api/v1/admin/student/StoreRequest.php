@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
     {
         return [
               // This Function For Create Student
-            'username'=>['required','string', 'unique:users,username'],
+            'name'=>['required','string', 'unique:users,name'],
             'avatar' => ['nullable', 'image', 'max:2048'],
             'role'=>['sometimes','string', 'in:teacher,admin', 'default:student'],
             'address'=>['required','string'],

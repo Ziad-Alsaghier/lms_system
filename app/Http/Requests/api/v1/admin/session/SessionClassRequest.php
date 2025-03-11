@@ -29,10 +29,9 @@ class SessionClassRequest extends FormRequest
             'student_id'=>['required', 'exists:users,id'],
             'teacher_id'=>['required', 'exists:users,id'],
             'day'=>['required', 'string', 'in:Saturday,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday'],
-            'duration'=>['required', 'integer'],
             'status'=>['sometimes', 'string', 'in:pending,processing,done,cancelled'],
             'active' => ['sometimes', 'string', 'in:active,inactive'],
-            'price'=>['required', 'numeric'],
+            'category'=>['sometimes', 'string'],
             'package_id'=>['sometimes', 'exists:packages,id'],
             'date' => ['required', 'date_format:Y-m-d'], // YYYY-MM-DD
 

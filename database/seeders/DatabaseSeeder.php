@@ -17,12 +17,36 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        $users = [
 
-        User::factory()->create([
-            'username' => 'Test User',
-            'email' => 'test@example.com',
-            'role' => 'admin',
-            'password' => static::$password ??= Hash::make('123'),
-        ]);
+            [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'role' => 'admin',
+                'address' => fake()->address(),
+                'avatar' => fake()->image(),
+                'phone' => fake()->phoneNumber(),
+                'password' => static::$password ??= Hash::make('123'),
+            ],
+            [
+                'name' => 'teacher',
+                'email' => 'teacher@gmail.com',
+                'role' => 'teacher',
+                'address' => fake()->address(),
+                'avatar' => fake()->image(),
+                'phone' => fake()->phoneNumber(),
+                'password' => static::$password ??= Hash::make('123'),
+            ],
+            [
+                'name' => 'Student',
+                'email' => 'student@gmail.com',
+                'role' => 'student',
+                'address' => fake()->address(),
+                'phone' => fake()->phoneNumber(),
+                'avatar' => fake()->image(),
+                'password' => static::$password ??= Hash::make('123'),
+            ],
+        ];
+        User::insert($users);
     }
 }

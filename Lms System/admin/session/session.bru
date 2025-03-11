@@ -5,27 +5,28 @@ meta {
 }
 
 get {
-  url: http://lms_system.test/admin/teacher/show
+  url: http://lms_system.test/admin/session/show
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 1|JeKbucXiBXHX4jLBYm3fdE95ZTS0Tfe1AfwBtpyxd4ae68ba
+  token: 6|MfNax2XtVDuIQ6E1UJx2pZbwcfnBTifoqJEwIL2b1e6d4183
 }
 
 body:multipart-form {
-  student_id: 2
-  teacher_id: 3
+  student_id: 3
+  teacher_id: 2
   day: Sunday
   start: 12:30
   end: 12:30
   payment_method: paid
   subject_id: 1
   duration: 50
-  category: 
+  category: Test
   status: pending
   active: active
-  price: 500
   package_id: 1
+  date: 2025-03-13
+  : 
 }

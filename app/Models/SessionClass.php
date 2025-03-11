@@ -15,11 +15,10 @@ class SessionClass extends Model
             'date',
             'start',
             'end',
+            // 'category',
             'status', // 'pending', 'processing', 'done', 'cancelled'
-            'price',
             'active' , // 'active', 'inactive'
             'payment_method',
-        // 'price',
     ];
     public function student()
     {

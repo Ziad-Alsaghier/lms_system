@@ -24,7 +24,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-               'username'=>['sometimes','string', 'unique:users,username'],
+               'name'=>['sometimes','string', 'unique:users,name'],
                'email'=>['sometimes','email', 'unique:users,email'],
                'password'=>['sometimes','min:6'],
                'avatar' => ['nullable', 'image', 'max:2048'],

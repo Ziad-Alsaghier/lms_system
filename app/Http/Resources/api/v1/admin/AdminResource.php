@@ -25,13 +25,13 @@ class AdminResource extends JsonResource
          parent::toArray($request);
            return [
                 'id' => $this->id,
-                'username' => $this->username,
+                'name' => $this->name,
                 'email' => $this->email,
                 'avatar' => $this->avatar,  
                 'role' => $this->role,
                 'token' => $this->when(isset($this->token), $this->token->token), // Include token if available
-                'created_at' => $this->created_at->format('Y-m-d'),
-                'updated_at' => $this->updated_at->format('Y-m-d'),
+                'created_at' => $this->created_at?->format('Y-m-d') ?? Null,
+                'updated_at' => $this->updated_at?->format('Y-m-d') ?? Null,
             
         ];
     }
