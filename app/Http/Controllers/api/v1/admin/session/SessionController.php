@@ -33,6 +33,15 @@ class SessionController extends Controller
     {
         // URL : http://localhost/lms_system/public/api/v1/admin/session
         $data = $request->validated();
+            $sessionCount = $this->sessionClass->whereDate('date', $data['date'])->count();
+
+            if ($sessionCount >= 3) {
+            return response()->json([
+            'status' => 'error',
+            'message' => 'You cannot add more than three sessions on the same day.'
+            ], 422);
+            }
+
         $session = $this->sessionClass->create($data);
         return response()->json([
             'status' => 'success',
