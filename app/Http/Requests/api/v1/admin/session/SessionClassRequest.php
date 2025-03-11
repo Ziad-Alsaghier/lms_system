@@ -32,6 +32,7 @@ class SessionClassRequest extends FormRequest
             'active' => ['sometimes', 'string', 'in:active,inactive'],
             'price'=>['required', 'numeric'],
             'package_id'=>['sometimes', 'exists:packages,id'],
+            'date' => ['required', 'date_format:Y-m-d'], // YYYY-MM-DD
 
         ];
     }
