@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\api\v1\admin\session;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class SessionClassRequest extends FormRequest
 {
@@ -36,4 +38,9 @@ class SessionClassRequest extends FormRequest
 
         ];
     }
+
+      public function failedValidation(Validator $validator)
+      {
+      throw new ValidationException($validator, response()->json($validator->errors(), 422));
+      }
 }
