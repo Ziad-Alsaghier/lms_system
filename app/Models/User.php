@@ -36,7 +36,7 @@ class User extends Authenticatable
         'category',
         'payment_method',
         'status',
-        'subject_id',
+        'package_id',
         'sessionCount',
     ];
 
@@ -97,10 +97,7 @@ class User extends Authenticatable
                 : asset('storage/avatars/default.png'); // Default avatar
         }
  
-        public function subject()
-        {
-            return $this->belongsTo(Subject::class);
-        }
+      
         public function teacherSessions()
         {
             return $this->hasMany(SessionClass::class, 'teacher_id')->whereNull('start')->whereNull('end');

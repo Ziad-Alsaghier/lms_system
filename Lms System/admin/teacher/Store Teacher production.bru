@@ -4,8 +4,8 @@ meta {
   seq: 6
 }
 
-get {
-  url: https://alghars.net/admin/teacher/show
+post {
+  url: https://alghars.net/admin/teacher/create
   body: multipartForm
   auth: bearer
 }
@@ -27,8 +27,8 @@ body:json {
 }
 
 body:multipart-form {
-  username: alghars
-  email: alghars@gmail.com
+  username: ziadteacher
+  email: ziad@gmail.com
   password: 123
   phone: 01099475854
   address: Miami

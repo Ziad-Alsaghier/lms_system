@@ -32,6 +32,7 @@ class SessionClassRequest extends FormRequest
             'subject_id'=>['required', 'exists:subjects,id'],
             'active' => ['sometimes', 'string', 'in:active,inactive'],
             'price'=>['required', 'numeric'],
+            'package_id'=>['sometimes', 'exists:packages,id'],
 
         ];
     }

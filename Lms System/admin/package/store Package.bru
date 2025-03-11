@@ -1,0 +1,22 @@
+meta {
+  name: store Package
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://lms_system.test/admin/package/update/1
+  body: multipartForm
+  auth: bearer
+}
+
+auth:bearer {
+  token: 3|56WKNIXhGK210Cx00KWhCYsEK9ilhqHgRmOfpLPE1eef2f50
+}
+
+body:multipart-form {
+  name: اشتراك يومي
+  sessionCount: 5
+  status: active
+  price: 200
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\v1\admin\category\CategoryController;
+use App\Http\Controllers\api\v1\admin\package\PackageController;
 use App\Http\Controllers\api\v1\admin\session\SessionController;
 use App\Http\Controllers\api\v1\admin\sitteng\TeacherController;
 use App\Http\Controllers\api\v1\admin\student\StudentController;
@@ -41,6 +42,12 @@ Route::middleware(['auth:sanctum', 'IsAdmin'])->group(function () {
         Route::get('/show', [SubjectController::class, 'index']); // Read: /subject/show
         Route::post('/update/{id}', [SubjectController::class, 'update']); // Update: /subject/update/{id}
         Route::delete('/delete/{id}', [SubjectController::class, 'destroy']); // Delete: /subject/delete/{id}
+    });
+    Route::prefix('package')->group(function () {
+        Route::post('/create', [PackageController::class, 'store']); // Create: /subject/create
+        Route::get('/show', [PackageController::class, 'index']); // Read: /subject/show
+        Route::post('/update/{package}', [PackageController::class, 'update']); // Update: /subject/update/{id}
+        Route::delete('/delete/{package}', [PackageController::class, 'destroy']); // Delete: /subject/delete/{id}
     });
 });
  
