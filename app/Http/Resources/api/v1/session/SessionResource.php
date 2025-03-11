@@ -22,7 +22,6 @@ class SessionResource extends JsonResource
             'date' => $this->date,
             'start' => $this->session_date,
             'end' => $this->session_time,
-            'subject' => $this->subject->name,    
             'status' => $this->status,
             'teacher' => new TeacherResource($this->teacher),
             'student' => new StudentResource($this->student),
