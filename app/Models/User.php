@@ -103,6 +103,10 @@ class User extends Authenticatable
         {
             return $this->hasMany(SessionClass::class, 'teacher_id')->whereNull('start')->whereNull('end');
         }
+        public function sessions()
+        {
+            return $this->hasMany(SessionClass::class, 'teacher_id');
+        }
         public function studentSessions()
         {
             return $this->hasMany(SessionClass::class, 'student_id')->whereNotNull('start')->whereNotNull('end');

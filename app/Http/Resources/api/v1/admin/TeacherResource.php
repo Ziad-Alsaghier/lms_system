@@ -36,7 +36,7 @@ class TeacherResource extends JsonResource
                 'sessionCount' => $this->teacherSessions->count(),
                 'avatar' => $this->getAvatarUrl(),
                 'token' => $this->when(isset($this->token), $this->token->token ?? Null), // Include token if available
-                'current_session' => $this->getCurrentMonthSessions(),
+                'sessions' => $this->sessions,
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
         ];
