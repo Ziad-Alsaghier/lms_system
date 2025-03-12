@@ -37,7 +37,7 @@ class TeacherResource extends JsonResource
                 'sessionCount' => $this->teacherSessions->count(),
                 'avatar' => $this->getAvatarUrl(),
                 'token' => $this->when(isset($this->token), $this->token->token ?? Null), // Include token if available
-                'sessions' => $this->sessions,
+                'sessions' => $this->getCurrentMonthSessions(),
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at,
         ];
@@ -67,7 +67,7 @@ class TeacherResource extends JsonResource
                 'date' => $day,
                 'sessions' => $daySessions->isNotEmpty()
                     ? CurrentSession::collection($daySessions)
-                    : "You don't have a session on this day",
+                    : [],
             ];
         }
 

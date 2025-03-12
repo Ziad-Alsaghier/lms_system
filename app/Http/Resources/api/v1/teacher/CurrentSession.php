@@ -20,7 +20,6 @@ class CurrentSession extends JsonResource
             'Session_id' => $this->id,
             'start' => $this->start,
             'end' => $this->end,
-            'subject' => $this->subject->name,
             'active' => $this->active,
             'student' => new Student($this->student) ,
             'teacher' => $this->teacher,

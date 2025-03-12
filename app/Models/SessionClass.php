@@ -29,6 +29,11 @@ class SessionClass extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
+
+    public function package(){
+        return $this->belongsTo(Package::class);
+    }
+
    
 
 }

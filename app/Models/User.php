@@ -105,7 +105,7 @@ class User extends Authenticatable
       
         public function teacherSessions()
         {
-            return $this->hasMany(SessionClass::class, 'teacher_id')->whereNull('start')->whereNull('end');
+            return $this->hasMany(SessionClass::class, 'teacher_id')->with(['package','student'])->whereNull('start')->whereNull('end');
         }
         public function sessions()
         {

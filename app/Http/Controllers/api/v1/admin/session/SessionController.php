@@ -43,8 +43,15 @@ class SessionController extends Controller
         //             'message'=> 'This Student Don\'t Have Package'
         //             ],500);
         // }
-               
-        
+
+
+            //     if ($sessionCount >= 3) {
+            // return response()->json([
+            // 'status' => 'error',
+            // 'message' => 'You cannot add more than three sessions on the same day.'
+            // ], 422);
+            // }
+
         $session = $this->sessionClass->create($data);
         return response()->json([
             'status' => 'success',

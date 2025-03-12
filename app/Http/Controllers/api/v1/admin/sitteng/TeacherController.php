@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\teacher\StoreRequest;
 use App\Http\Requests\api\v1\admin\teacher\UpdateRequest;
 use App\Http\Resources\api\v1\admin\TeacherResource;
+use App\Http\Resources\api\v1\admin\UserResource;
 use App\Models\User;
 use App\services\Image;
 use Illuminate\Http\Request;
@@ -88,7 +89,7 @@ class TeacherController extends Controller
     {
         // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher
         $teacher = $this->user->where('role', 'teacher')->get();
-            $teacher = TeacherResource::collection($teacher);
+            $teacher = UserResource::collection($teacher);
         return response()->json([
             'status' => 'success',
             'data' => $teacher

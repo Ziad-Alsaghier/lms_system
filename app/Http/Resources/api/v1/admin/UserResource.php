@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->when($this->role === 'teacher', $this->email),
+            'sessions' => $this->when($this->role === 'teacher', $this->teacherSessions),
             'avatar' => $this->getAvatarUrl($this->avatar),
             'role' => $this->role,
             'phone' => $this->phone,
