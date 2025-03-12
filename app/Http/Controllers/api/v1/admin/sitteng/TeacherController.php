@@ -45,8 +45,13 @@ class TeacherController extends Controller
                 'message' => $user ? 'User Not Teacher' : 'User Not Found'
             ], );
         }
+
+            
         if ($request->hasFile('avatar')) {
             $data['avatar'] = $this->updateImage($request->file('avatar'), $user->avatar, 'avatars/');
+        }
+        if(empty($request->passwor)){
+            $data['password'] = $user->password;
         }
         $user->update($data);
         return response()->json([
