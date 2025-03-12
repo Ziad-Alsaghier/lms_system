@@ -35,7 +35,11 @@ class PackageRequest extends FormRequest
 
      public function failedValidation(Validator $validator)
     {
-        throw new ValidationException($validator, response()->json(
-            ['message'=>$validator->errors()], 422));
+        foreach ($validator->errors() as $key => $value) {
+            $errors =  $validator->errors()->add($key, $value);
+            throw new ValidationException(response()->json([$key=>$errors],400));
+        }
+        
     }
+
 }
