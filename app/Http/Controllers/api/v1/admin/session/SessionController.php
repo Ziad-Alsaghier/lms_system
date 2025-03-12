@@ -36,15 +36,15 @@ class SessionController extends Controller
         $data = $request->validated();
             $sessionCount = $this->sessionClass->whereDate('date', $data['date'])->count();
                 $student = $this->user->find($data['student_id']);
-                 $packageCheck = $this->checkStudentPackage($student);
-        if (!$packageCheck) {
-                return response()->json([
-                    'status'=> 'error',
-                    'message'=> 'This Student Don\'t Have Package'
-                    ],500);
-        }
+        //          $packageCheck = $this->checkStudentPackage($student);
+        // if (!$packageCheck) {
+        //         return response()->json([
+        //             'status'=> 'error',
+        //             'message'=> 'This Student Don\'t Have Package'
+        //             ],500);
+        // }
                
-
+        
         $session = $this->sessionClass->create($data);
         return response()->json([
             'status' => 'success',
