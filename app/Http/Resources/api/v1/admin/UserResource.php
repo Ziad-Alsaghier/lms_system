@@ -33,6 +33,7 @@ class UserResource extends JsonResource
             'payment_method' => $this->payment_method,
             'age' => $this->age,
             'sessionsLimite' => $this->sessionsLimite,
+            'price' => $this->price,
             'subscription' => $this->package
         ] : []);
     }

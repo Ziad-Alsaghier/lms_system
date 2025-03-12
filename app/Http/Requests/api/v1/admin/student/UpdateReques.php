@@ -32,6 +32,7 @@ class UpdateReques extends FormRequest
               'parent_phone'=>['sometimes','string'],
              'payment_method' => ['sometimes', 'string', 'in:0,1,2'],
              'package_id' => ['sometimes'],
+             'price' => ['sometimes','integer'],
               'age'=>['sometimes','integer'],
               'status'=>['sometimes','string', 'in:active,inactive'],
         ];
