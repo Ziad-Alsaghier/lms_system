@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
             //
                'name'=>['sometimes','string'],
                'email'=>['sometimes','email'],
-               'password'=>['sometimes','min:6'],
+               'password'=>['sometimes'],
                'avatar' => ['sometimes', 'image', 'max:2048'],
                'role'=>['sometimes','string', 'in:teacher,admin', 'default:admin'],
                'phone'=>['sometimes','min:6'],
