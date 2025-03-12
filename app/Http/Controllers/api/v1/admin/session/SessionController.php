@@ -35,8 +35,15 @@ class SessionController extends Controller
         // URL : http://localhost/lms_system/public/api/v1/admin/session
         $data = $request->validated();
             $sessionCount = $this->sessionClass->whereDate('date', $data['date'])->count();
-
-            if ($sessionCount >= 3) {
+                $student = $this->user->find($data['student_id']);
+                $packageCheck = $this->checkStudentPackage($student);
+        if (!$packageCheck) {
+                return response()->json([
+                    'status'=> 'error',
+                    'message'=> 'This Student Don\'t Have Package'
+                    ],500);
+        }
+                if ($sessionCount >= 3) {
             return response()->json([
             'status' => 'error',
             'message' => 'You cannot add more than three sessions on the same day.'
@@ -48,6 +55,15 @@ class SessionController extends Controller
             'status' => 'success',
             'data' => $session
         ], 201);
+    }
+
+
+    public function checkStudentPackage($student){
+        if (empty($student->backage)) {
+            return true;
+        }else{
+            return false;
+        }
     }
         // This Function update Session Class Status
     public function update(SessionClassUpdate $request, $id)
