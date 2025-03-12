@@ -36,7 +36,7 @@ class StoreRequest extends FormRequest
             'sessionCount'=>['sometimes','integer'],
             'subscription'=>['sometimes','string'],  
             'status'=>['sometimes','string', 'in:active,inactive'],
-            'package_id'=>['sometimes', 'exists:packages,id'],
+            'package_id'=>['sometimes'],
             'price'=>['sometimes', 'integer'],
             'sessionsLimite'=>['sometimes', 'integer'],
             // 'phone'=>['required','min:6'],
