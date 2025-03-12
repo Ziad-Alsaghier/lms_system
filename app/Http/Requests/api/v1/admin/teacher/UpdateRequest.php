@@ -24,10 +24,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
-               'name'=>['sometimes','string', 'unique:users,name'],
-               'email'=>['sometimes','email', 'unique:users,email'],
+               'name'=>['sometimes','string'],
+               'email'=>['sometimes','email'],
                'password'=>['sometimes','min:6'],
-               'avatar' => ['nullable', 'image', 'max:2048'],
+               'avatar' => ['sometimes', 'image', 'max:2048'],
                'role'=>['sometimes','string', 'in:teacher,admin', 'default:admin'],
                'phone'=>['sometimes','min:6'],
                'address'=>['sometimes','string'],

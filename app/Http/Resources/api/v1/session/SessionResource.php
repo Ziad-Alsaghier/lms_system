@@ -19,16 +19,17 @@ class SessionResource extends JsonResource
     {
          parent::toArray($request);
         return [
-            'id' => $this->id,
-            'date' => $this->date,
-            'start' => $this->session_date,
-            'end' => $this->session_time,
-            'status' => $this->status,
-            'teacher' => new UserResource($this->teacher),
-            'student' => new UserResource($this->student),
-            // 'student' => new StudentResource($this->student),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at          
+            'id' => $this?->id,
+            'date' => $this?->date,
+            'start' => $this?->session_date,
+            'end' => $this?->session_time,
+            'active' => $this?->active,
+            'status' => $this?->status,
+            'teacher' => new UserResource($this?->teacher),
+            'student' => new UserResource($this?->student),
+            // 'student' => new StudentResource($this?->student),
+            'created_at' => $this?->created_at,
+            'updated_at' => $this?->updated_at          
         ];
     }
 }
