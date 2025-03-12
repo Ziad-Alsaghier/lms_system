@@ -37,6 +37,7 @@ class User extends Authenticatable
         'payment_method',
         'status',
         'package_id',
+        'price',
         'sessionsLimite',
         'sessionCount',
     ];

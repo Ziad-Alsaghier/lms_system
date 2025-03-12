@@ -27,6 +27,7 @@ return new class extends Migration
     $table->enum('payment_method', ['0', '1', '2'])->nullable(); // 0:تقسيط لم يتم الدفع, 1: تم الدفع, 2:
             $table->enum('status',['active','inactive'])->default('active'); // this field for status
             $table->foreignId('package_id')->nullable()->constrained('packages')->onDelete('cascade');
+            $table->integer('price')->nullable();
             $table->string('sessionCount')->default(0); // this field for session count
             $table->string('sessionsLimite')->nullable(); // this field for subscription
             $table->rememberToken();
