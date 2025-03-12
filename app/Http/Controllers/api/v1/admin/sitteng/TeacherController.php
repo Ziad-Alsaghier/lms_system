@@ -50,8 +50,10 @@ class TeacherController extends Controller
         if ($request->hasFile('avatar')) {
             $data['avatar'] = $this->updateImage($request->file('avatar'), $user->avatar, 'avatars/');
         }
-        if(empty($request->passwor)){
-            $data['password'] = $user->password;
+        if(empty($request->password)){
+           $data['password'] = $user->password ?? $request->password;
+        }else{
+            $data['password'] = bcrypt($request->password);
         }
         $user->update($data);
         return response()->json([
