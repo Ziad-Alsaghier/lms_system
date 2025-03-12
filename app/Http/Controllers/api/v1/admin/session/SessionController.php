@@ -36,7 +36,7 @@ class SessionController extends Controller
         $data = $request->validated();
             $sessionCount = $this->sessionClass->whereDate('date', $data['date'])->count();
                 $student = $this->user->find($data['student_id']);
-                $packageCheck = $this->checkStudentPackage($student);
+                 $packageCheck = $this->checkStudentPackage($student);
         if (!$packageCheck) {
                 return response()->json([
                     'status'=> 'error',
@@ -59,7 +59,7 @@ class SessionController extends Controller
 
 
     public function checkStudentPackage($student){
-        if (empty($student->backage)) {
+        if ($student->package != null) {
             return true;
         }else{
             return false;
