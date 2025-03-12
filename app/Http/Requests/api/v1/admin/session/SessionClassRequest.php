@@ -28,7 +28,7 @@ class SessionClassRequest extends FormRequest
             // This Function For Create Session
             'student_id'=>['required', 'exists:users,id'],
             'teacher_id'=>['required', 'exists:users,id'],
-            'day'=>['required', 'string', 'in:Saturday,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday'],
+            'day'=>['sometimes', 'string', 'in:Saturday,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday'],
             'status'=>['sometimes', 'string', 'in:pending,processing,done,cancelled'],
             'active' => ['sometimes', 'string', 'in:active,inactive'],
             'category'=>['sometimes', 'string'],
