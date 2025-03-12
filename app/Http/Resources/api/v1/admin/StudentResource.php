@@ -2,8 +2,10 @@
 
 namespace App\Http\Resources\api\v1\admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Validation\ValidationException;
 
 class StudentResource extends JsonResource
 {
@@ -39,4 +41,10 @@ class StudentResource extends JsonResource
                 'updated_at' => $this->updated_at?->format('Y-m-d'),
         ];
     }
+
+     public function failedValidation(Validator $validator)
+     {
+     throw new ValidationException($validator, response()->json(
+     ['message'=>$validator->errors()], 422));
+     }
 }

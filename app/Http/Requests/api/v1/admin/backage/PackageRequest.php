@@ -33,8 +33,9 @@ class PackageRequest extends FormRequest
         ];
     }
 
-      public function failedValidation(Validator $validator)
-      {
-      throw new ValidationException($validator, response()->json($validator->errors(), 422));
-      }
+     public function failedValidation(Validator $validator)
+    {
+        throw new ValidationException($validator, response()->json(
+            ['message'=>$validator->errors()], 422));
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\api\v1\admin\teacher;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UpdateRequest extends FormRequest
 {
@@ -33,5 +35,11 @@ class UpdateRequest extends FormRequest
                'address'=>['sometimes','string'],
                'status'=>['sometimes','in:active,inactive'],
         ];
+    }
+
+     public function failedValidation(Validator $validator)
+    {
+        throw new ValidationException($validator, response()->json(
+            ['message'=>$validator->errors()], 422));
     }
 }

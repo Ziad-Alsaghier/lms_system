@@ -39,7 +39,8 @@ class SessionClassRequest extends FormRequest
     }
 
       public function failedValidation(Validator $validator)
-      {
-      throw new ValidationException($validator, response()->json($validator->errors(), 422));
-      }
+    {
+        throw new ValidationException($validator, response()->json(
+            ['message'=>$validator->errors()], 422));
+    }
 }

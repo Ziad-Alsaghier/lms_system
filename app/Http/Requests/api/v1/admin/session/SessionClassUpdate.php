@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests\api\v1\admin\session;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class SessionClassUpdate extends FormRequest
 {
@@ -33,5 +35,11 @@ class SessionClassUpdate extends FormRequest
             'package_id'=>['sometimes', 'exists:packages,id'],
             'date' => ['sometimes', 'date_format:Y-m-d'], // YYYY-MM-DD
         ];
+    }
+
+     public function failedValidation(Validator $validator)
+    {
+        throw new ValidationException($validator, response()->json(
+            ['message'=>$validator->errors()], 422));
     }
 }

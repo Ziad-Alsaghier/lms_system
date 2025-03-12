@@ -36,7 +36,7 @@ class StoreRequest extends FormRequest
             'sessionCount'=>['sometimes','integer'],
             'subscription'=>['sometimes','string'],  
             'status'=>['sometimes','string', 'in:active,inactive'],
-            'package_id'=>['sometimes'],
+            'package_id'=>['sometimes'  ],
             'price'=>['sometimes', 'integer'],
             'sessionsLimite'=>['sometimes', 'integer'],
             // 'phone'=>['required','min:6'],
@@ -48,6 +48,7 @@ class StoreRequest extends FormRequest
 
      public function failedValidation(Validator $validator)
     {
-        throw new ValidationException($validator, response()->json($validator->errors(), 422));
+        throw new ValidationException($validator, response()->json(
+            ['message'=>$validator->errors()], 422));
     }
 }
