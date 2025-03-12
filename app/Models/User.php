@@ -48,7 +48,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        // 'password',
+        'password',
         'remember_token',
     ];
 
@@ -77,7 +77,10 @@ class User extends Authenticatable
      $user->token = $user->createToken('personal access token')->plainTextToken;
      return $user;
      }
-
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
      public function regenerateToken($user){
      $user->tokens()->delete();
      $user->token = $user->createToken('personal access token')->plainTextToken;

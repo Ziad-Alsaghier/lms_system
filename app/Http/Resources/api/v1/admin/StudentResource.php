@@ -33,6 +33,7 @@ class StudentResource extends JsonResource
                 'payment_method' => $this->payment_method,
                 'age' => $this->age,
                 'sessionCount' => $this->studentSessions->count(),
+                'subscription' => $this->package,
                 'created_at' => $this->created_at?->format('Y-m-d'),
                 'updated_at' => $this->updated_at?->format('Y-m-d'),
         ];
