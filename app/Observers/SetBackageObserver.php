@@ -21,6 +21,7 @@ class SetBackageObserver
             $package = Package::find($package_id); // Get Package
             $student->sessionsLimite = $package->sessionCount; // Set SessionCount from package to student SessionLimit
             $student->package_id = $package_id; // Set Package For Student
+            $student->save();   
         }
 
     }

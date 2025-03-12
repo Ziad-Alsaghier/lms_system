@@ -32,7 +32,7 @@ class SessionClassUpdate extends FormRequest
             'status'=>['sometimes', 'string', 'in:pending,processing,done,cancelled'],
             'active' => ['sometimes', 'string', 'in:active,inactive'],
             'category'=>['sometimes', 'string'],
-            'package_id'=>['sometimes', 'exists:packages,id'],
+            'package_id'=>['sometimes'],
             'date' => ['sometimes', 'date_format:Y-m-d'], // YYYY-MM-DD
         ];
     }

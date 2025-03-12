@@ -4,14 +4,14 @@ meta {
   seq: 1
 }
 
-get {
-  url: http://lms_system.test/admin/session/show
+post {
+  url: http://lms_system.test/admin/session/create
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 6|MfNax2XtVDuIQ6E1UJx2pZbwcfnBTifoqJEwIL2b1e6d4183
+  token: 8|uOcGqB3d4rAVeAJFlrG69ci566P8C8vmh6EhjJDl2545c231
 }
 
 body:multipart-form {
@@ -27,6 +27,6 @@ body:multipart-form {
   status: pending
   active: active
   package_id: 1
-  date: 2025-03-13
+  date: 2025-03-14
   : 
 }
