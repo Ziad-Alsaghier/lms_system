@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://lms_system.test/admin/teacher/update/11
+  url: http://lms_system.test/admin/student/update/2
   body: multipartForm
   auth: bearer
 }
@@ -27,10 +27,10 @@ body:json {
 }
 
 body:multipart-form {
-  username: teacher22
-  password: 1234444
+  username: student
   phone: 01099475854
   address: Miami
-  email: teacher@gmail.com
+  email: student@gmail.com
+  ~password: Makemesmile123
   ~avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
 }

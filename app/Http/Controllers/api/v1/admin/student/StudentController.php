@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\student\StoreRequest;
 use App\Http\Requests\api\v1\admin\student\UpdateReques;
 use App\Http\Resources\api\v1\admin\StudentResource;
+use App\Http\Resources\api\v1\admin\UserResource;
 use App\Models\User;
 use App\services\Image;
 // use Illuminate\Http\Request;
@@ -50,10 +51,11 @@ class StudentController extends Controller
         if ($request->hasFile('avatar')) {
             $data['avatar'] = $this->updateImage($request->file('avatar'), $user->avatar, 'avatars/');
         }
+        $studentResource = UserResource::make($user);
         $user->update($data);
         return response()->json([
             'status' => 'success',
-            'user' => $user
+            'user' => $studentResource
         ], 200);
     }
     // This Function For Delete Teacher

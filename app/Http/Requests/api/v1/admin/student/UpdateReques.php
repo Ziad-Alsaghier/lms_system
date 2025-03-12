@@ -24,15 +24,14 @@ class UpdateReques extends FormRequest
     {
         return [
             // This Function For Update Student
-              'name'=>['sometimes','string', 'unique:users,
-              '],
-              'email'=>['sometimes','email', 'unique:users,email'],
+              'name'=>['sometimes','string'],
               'avatar' => ['nullable', 'image', 'max:2048'],
               'role'=>['sometime','string', 'in:teacher,admin'],
               'phone'=>['sometimes','min:6'],
               'address'=>['sometimes','string'],
-              'parent'=>['sometimes','string'],
+              'parent_phone'=>['sometimes','string'],
              'payment_method' => ['sometimes', 'string', 'in:0,1,2'],
+             'package_id' => ['sometimes'],
               'age'=>['sometimes','integer'],
               'status'=>['sometimes','string', 'in:active,inactive'],
         ];

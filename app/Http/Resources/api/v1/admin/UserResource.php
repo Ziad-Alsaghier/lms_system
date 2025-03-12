@@ -32,7 +32,8 @@ class UserResource extends JsonResource
             'parent_phone' => $this->parent_phone,
             'payment_method' => $this->payment_method,
             'age' => $this->age,
-            'sessionsLimite' => $this->sessionsLimite
+            'sessionsLimite' => $this->sessionsLimite,
+            'subscription' => $this->package
         ] : []);
     }
 }
