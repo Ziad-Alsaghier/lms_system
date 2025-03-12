@@ -29,7 +29,7 @@ class StudentResource extends JsonResource
                 'parent_phone' => $this->parent_phone,
                 'category' => $this->category,
                 'status' => $this->status,
-                'subscription' => $this->subscription,
+                'sessionsLimite' => $this->sessionsLimite,
                 'payment_method' => $this->payment_method,
                 'age' => $this->age,
                 'sessionCount' => $this->studentSessions->count(),
