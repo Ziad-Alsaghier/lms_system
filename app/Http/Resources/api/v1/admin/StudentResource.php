@@ -34,6 +34,7 @@ class StudentResource extends JsonResource
                 'age' => $this->age,
                 'sessionCount' => $this->studentSessions->count(),
                 'subscription' => $this->package,
+                'price' => $this->price,
                 'created_at' => $this->created_at?->format('Y-m-d'),
                 'updated_at' => $this->updated_at?->format('Y-m-d'),
         ];
