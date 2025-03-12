@@ -32,6 +32,7 @@ class TeacherResource extends JsonResource
                 'email' => $this->email,
                 'role' => $this->role,
                 'phone' => $this->phone,
+                'status' => $this->status,
                 'address' => $this->address,
                 'sessionCount' => $this->teacherSessions->count(),
                 'avatar' => $this->getAvatarUrl(),

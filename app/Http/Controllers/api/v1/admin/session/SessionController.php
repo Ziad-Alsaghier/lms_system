@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1\admin\session;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\v1\admin\session\SessionClassRequest;
+use App\Http\Requests\api\v1\admin\session\SessionClassUpdate;
 use App\Http\Resources\api\v1\session\SessionResource;
 use App\Models\SessionClass;
 use App\Models\User;
@@ -49,8 +50,8 @@ class SessionController extends Controller
         ], 201);
     }
         // This Function update Session Class Status
-    public function update(Request $request, $id)
-    {
+    public function update(SessionClassUpdate $request, $id)
+    {   $data = $request->validated();
         // URL : http://localhost/lms_system/public/api/v1/admin/session/{id}
         $session = $this->sessionClass->find($id);
         if (!$session) {
@@ -59,7 +60,7 @@ class SessionController extends Controller
                 'message' => 'Session Not Found'
             ], 404);
         }
-        $session->update($request->all());
+        $session->update($data);
         return response()->json([
             'status' => 'success',
             'message' => 'Session Updated Successfully'
