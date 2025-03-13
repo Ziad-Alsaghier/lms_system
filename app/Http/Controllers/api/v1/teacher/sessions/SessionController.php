@@ -33,7 +33,7 @@ class SessionController extends Controller
                  $daySessions = CurrentSession::collection($daySessions);
         $daysWithSessions[] = [
         'date' => $day,
-        'sessions' => $daySessions->isEmpty() ? "You Don't Have Session In This Day" : $daySessions,
+        'sessions' => $daySessions->isEmpty() ? [] : $daySessions,
         ];
         }
 
