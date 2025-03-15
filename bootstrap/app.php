@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\IsActive;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Middleware\IsTeacher;
 use App\Models\SessionClass;
@@ -32,6 +33,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'IsTeacher'=>IsTeacher::class,
             'IsAdmin'=>IsAdmin::class,
+            'IsActive'=>IsActive::class,
                 'User' => App\Models\User::class,
 
         ]);

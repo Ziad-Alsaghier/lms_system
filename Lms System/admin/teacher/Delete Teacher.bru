@@ -5,13 +5,13 @@ meta {
 }
 
 delete {
-  url: http://lms_system.test/admin/teacher/delete/3
+  url: {{url}}admin/teacher/delete/3
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 9|Voi1itH4IbcXhcpoPJQrLJisIgV6LMmN1oxyeYrSb2cb82b9
+  token: {{token}}
 }
 
 body:json {

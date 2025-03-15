@@ -5,13 +5,13 @@ meta {
 }
 
 get {
-  url: http://lms_system.test/teacher/session/current
+  url: {{url}}teacher/session/current
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 9|mkOgBLHLcuA7RqtTMvGwYcIr4OhrzHBWFaGW3XGs038d8e5f
+  token: {{_token}}
 }
 
 body:json {

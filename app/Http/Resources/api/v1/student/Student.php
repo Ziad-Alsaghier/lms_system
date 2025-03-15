@@ -21,6 +21,7 @@ class Student extends JsonResource
             'role' => $this->role,
             'address' => $this->address,
             'parent_phone' => $this->parent_phone,
+            'subscription' => $this->package,
             'payment_method' => $this->payment_method,
         ];
         }

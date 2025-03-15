@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsTeacher
+class IsActive
 {
     /**
      * Handle an incoming request.
@@ -15,13 +16,13 @@ class IsTeacher
      */
     public function handle(Request $request, Closure $next): Response
     {
-         if (!auth()->check() || auth()->user()->role !== 'teacher' ) {
-            
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized'
-            ], 401);
-        } 
+      $user =   User::where('email', $request->email)->first();
+         if ($user->status == 'inactive') {
+         return response()->json([
+         'status' => 'error',
+         'message' => 'Teacher Can\'t be authorized Casue UnActive'
+         ], 403);
+         }
         return $next($request);
     }
 }

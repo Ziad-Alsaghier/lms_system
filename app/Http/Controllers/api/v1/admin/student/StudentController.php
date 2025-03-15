@@ -9,6 +9,8 @@ use App\Http\Resources\api\v1\admin\StudentResource;
 use App\Http\Resources\api\v1\admin\UserResource;
 use App\Models\User;
 use App\services\Image;
+use App\services\Package;
+
 // use Illuminate\Http\Request;
 class StudentController extends Controller
 {
@@ -18,13 +20,18 @@ class StudentController extends Controller
     public function __construct(
         private User $user,
     ) {}
-    use Image;
+    use Image,Package;
     // This Function For Create Student
     public function store(StoreRequest $request)
     {
     $data = $request->validated();
-
-    if ($request->hasFile('avatar')) {
+       $packageCheck = $this->checkActivation($data['package_id']);
+        if ($packageCheck->active == false) {
+            return response()->json([
+                'message'=>"The Package $packageCheck?->name Is Not Available"
+            ]);
+        }
+        if ($request->hasFile('avatar')) {
     $data['avatar'] = $this->uploadImage($request->file('avatar'), 'avatars/');
     }
 
@@ -58,6 +65,8 @@ class StudentController extends Controller
             'user' => $studentResource
         ], 200);
     }
+
+   
     // This Function For Delete Teacher
     public function destroy($id)
     {

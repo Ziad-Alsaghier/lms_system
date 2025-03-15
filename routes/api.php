@@ -9,5 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('/login', [AuthController::class, 'auth']);
+    Route::post('/login', [AuthController::class, 'auth'])->middleware('IsActive');
 });

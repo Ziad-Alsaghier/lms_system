@@ -5,11 +5,11 @@ meta {
 }
 
 get {
-  url: http://lms_system.test/teacher/session/current
+  url: {{url}}teacher/session/current
   body: none
   auth: bearer
 }
 
 auth:bearer {
-  token: 1|BaQL38K6oVsJub3yMrGJHNFL41CyaRc4A5TePAAw2e4a7bbb
+  token: {{_token}}
 }

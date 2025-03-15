@@ -5,13 +5,13 @@ meta {
 }
 
 post {
-  url: http://lms_system.test/admin/teacher/create
+  url: {{url}}admin/teacher/create
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: 1|JeKbucXiBXHX4jLBYm3fdE95ZTS0Tfe1AfwBtpyxd4ae68ba
+  token: {{token}}
 }
 
 body:json {
