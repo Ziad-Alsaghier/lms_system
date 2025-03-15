@@ -28,7 +28,7 @@ class SessionController extends Controller
         $day = $date->format('Y-m-d');
 
         // Filter sessions for the current day
-        $daySessions = $sessions->where('date', $day)->values();
+        $daySessions = $sessions->where('teacher_id',$request->user()->id)->where('date', $day)->values();
             
                  $daySessions = CurrentSession::collection($daySessions);
         $daysWithSessions[] = [
