@@ -5,13 +5,13 @@ meta {
 }
 
 post {
-  url: {{url}}admin/teacher/create
+  url: {{url}}admin/teacher/show
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: {{token}}
+  token: {{_token}}
 }
 
 body:json {
