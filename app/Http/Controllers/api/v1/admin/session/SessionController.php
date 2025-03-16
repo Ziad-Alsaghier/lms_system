@@ -58,8 +58,9 @@ class SessionController extends Controller
                 $student->sessionsLimite = $package->sessionCount;
                 $student->save();
             }
-            if ($student->sessionsLimite > 0) {
-                $student->sessionsLimite = $student->sessionsLimite - 1;
+            if ($student->package_id != Null) {
+                $packageStudent = $student->package;
+                $student->sessionsLimite = $packageStudent->sessionCount - $student->sessionsLimite ;
                 $student->save();
             } else {
                 return response()->json([
