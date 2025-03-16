@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-         if (!auth()->check() || auth()->user()->role !== 'teacher' ) {
+         if (!auth()->check() || auth()->user()->role !== 'admin' ) {
             
             return response()->json([
                 'status' => 'error',
