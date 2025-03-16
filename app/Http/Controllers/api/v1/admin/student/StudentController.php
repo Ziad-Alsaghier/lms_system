@@ -25,13 +25,15 @@ class StudentController extends Controller
     public function store(StoreRequest $request)
     {
     $data = $request->validated();
-    if(isset($data['student_id'])){
+    if(isset($data['package_id'])){
         $packageCheck = $this->checkActivation($data['package_id']);
          if ($packageCheck->active == false) {
          return response()->json([
          'message'=>"The Package $packageCheck?->name Is Not Available"
          ]);
-         }
+        }else{
+                $data['sessionsLimite'] = $packageCheck->sessionCount;
+        }
     }
        
         if ($request->hasFile('avatar')) {
