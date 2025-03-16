@@ -115,7 +115,7 @@ class User extends Authenticatable
         }
         public function countTeacherSessionsEnded(){
             return $this->hasMany(SessionClass::class,
-            'teacher_id')->with(['package','student'])->whereNotNull('start')->whereNotNull('end')->count();
+            'teacher_id')->with(['package','student'])->whereNotNull('start')->whereNotNull('end');
         }
         public function sessions()
         {
