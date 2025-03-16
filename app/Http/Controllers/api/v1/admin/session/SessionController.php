@@ -53,7 +53,7 @@ class SessionController extends Controller
                     $student->save(); 
                 }else{
                     return response ()->json([
-                        'message'=> trans('message.ar.package_need_update'),
+                        'message'=> __('message.package_need_update'),
                     ]);
 
                 }
