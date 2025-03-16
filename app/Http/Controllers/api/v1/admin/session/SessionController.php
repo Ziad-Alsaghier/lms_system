@@ -65,7 +65,7 @@ class SessionController extends Controller
                            ],501);
                 }
                 $packageStudent = $student->package;
-                $student->sessionsLimite = $packageStudent->sessionCount - $student->sessionsLimite ;
+                $student->sessionsLimite = $student->sessionsLimite - 1  ;
                 $student->save();
             } else {
                 return response()->json([
