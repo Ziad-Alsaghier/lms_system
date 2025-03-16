@@ -34,6 +34,7 @@ class StoreRequest extends FormRequest
             'role'=>['sometimes','string', 'in:teacher,admin', 'default:teacher'],
             'phone'=>['required','min:3'],
             'address'=>['required','string'],
+            'sessionLimit'=>['sometimes'],
             'status'=>['sometimes','string', 'in:active,inactive'],
         ];
     }

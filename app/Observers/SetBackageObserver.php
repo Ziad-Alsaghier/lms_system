@@ -14,12 +14,11 @@ class SetBackageObserver
      */
     public function created(SessionClass $sessionClass): void
     {
-        $package_id = $sessionClass->package_id ?? Null; // Set New Package
-             $student = User::find($sessionClass->student_id); // Get Student
-             $package = Package::find($package_id ?? $student->package->id); // Get Package
-            $student->sessionsLimite = $package->sessionCount; // Set SessionCount from package to student SessionLimit
-            $student->package_id = $package_id; // Set Package For Student
-            $student->save();   
+        // $package_id = $sessionClass->package_id ?? Null; // Set New Package
+        //      $student = User::find($sessionClass->student_id); // Get Student
+        //      $package = Package::find($package_id ?? $student->package->id); // Get Package
+        //     $student->sessionsLimite = $package->sessionCount; // Set SessionCount from package to student SessionLimit
+        //     $student->save();   
 
     }
 

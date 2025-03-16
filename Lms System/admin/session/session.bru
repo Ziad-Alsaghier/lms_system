@@ -4,29 +4,26 @@ meta {
   seq: 1
 }
 
-get {
-  url: {{url}}admin/teacher/show
+post {
+  url: {{url}}admin/session/create
   body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
-  token: {{token}}
+  token: {{_token}}
 }
 
 body:multipart-form {
-  student_id: 3
+  student_id: 8
   teacher_id: 2
   day: Sunday
-  start: 12:30
-  end: 12:30
   payment_method: paid
-  subject_id: 1
-  duration: 50
   category: Test
   status: pending
   active: active
-  package_id: 1
   date: 2025-03-16
-  : 
+  ~package_id: 1
+  ~start: 12:30
+  ~end: 12:30
 }

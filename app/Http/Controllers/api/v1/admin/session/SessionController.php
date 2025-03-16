@@ -36,14 +36,27 @@ class SessionController extends Controller
         $data = $request->validated();
             $sessionCount = $this->sessionClass->whereDate('date', $data['date'])->count();
                 $student = $this->user->find($data['student_id']);
-        //          $packageCheck = $this->checkStudentPackage($student);
-        // if (!$packageCheck) {
-        //         return response()->json([
-        //             'status'=> 'error',
-        //             'message'=> 'This Student Don\'t Have Package'
-        //             ],500);
-        // }
+                 $packageCheck = $this->checkStudentPackage($student);
+        if (!$packageCheck && !isset($data['package_id'] )) {
+                return response()->json([
+                    'status'=> 'error',
+                    'message'=> 'This Student Don\'t Have Package You Can Add Session For Session and automatically Added For Student '
+                    ],500);
+        } elseif ($packageCheck && isset($data['package_id'])) {
+                    return response()->json([
+                            'message'=>' can\'t be Add Session hase package Cause student have Package',
+                    ]);
+        }
 
+                if($student->sessionsLimite > 0 ){
+                    $student->sessionsLimite = $student->sessionsLimite - 1;
+                    $student->save(); 
+                }else{
+                    return response ()->json([
+                        'message'=> trans('message.ar.package_need_update'),
+                    ]);
+
+                }
 
             //     if ($sessionCount >= 3) {
             // return response()->json([

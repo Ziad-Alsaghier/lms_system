@@ -7,6 +7,7 @@ use App\Http\Requests\api\v1\admin\teacher\StoreRequest;
 use App\Http\Requests\api\v1\admin\teacher\UpdateRequest;
 use App\Http\Resources\api\v1\admin\TeacherResource;
 use App\Http\Resources\api\v1\admin\UserResource;
+use App\Models\Package;
 use App\Models\User;
 use App\services\Image;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class TeacherController extends Controller
 {
     // This Controller About All Setting Teacher
     public function __construct(
-        private User $user
+        private User $user,
+        private Package $package,
     ) {}
     use Image;
     // This Function For Create Teacher
@@ -24,6 +26,10 @@ class TeacherController extends Controller
         // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher
 
         $data = $request->validated();
+            if(isset($data["package_id"])){
+            $package_id = $data["package_id"];
+            $data['sessionLimit'] = $this->packageSessionLimit($package_id);
+            }
         if ($request->hasFile('avatar')) {
             $data['avatar'] = $this->uploadImage($request->file('avatar'), 'avatars/');
         }
@@ -33,6 +39,11 @@ class TeacherController extends Controller
             'status' => 'success',
             'data' => $teacher
         ], 201);
+    }
+    
+    public function packageSessionLimit($package_id){
+            $package = $this->package->find($package_id);
+        return $package->sessionCount;
     }
 
     // This Function about Update Teacher

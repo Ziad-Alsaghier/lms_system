@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{url}}admin/student/create
+  url: {{url}}admin/student/update/8
   body: multipartForm
   auth: bearer
 }
@@ -28,8 +28,8 @@ body:json {
 
 body:multipart-form {
   status: inactive
-  username: Student2
-  email: studen333t@gmail.com
+  name: StudentSession
+  email: StudentSession@gmail.com
   password: Makemesmile123
   address: Miami
   avatar: @file(D:\ImageLwyerKhaled\asstesUser\1.jpg)
@@ -37,6 +37,5 @@ body:multipart-form {
   parent_phone: 3913491439
   subscription: 5
   category: الاول الثانوي
-  name: Teacher New333
   package_id: 1
 }
