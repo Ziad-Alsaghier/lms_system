@@ -59,6 +59,11 @@ class SessionController extends Controller
                 $student->save();
             }
             if ($student->package_id != Null) {
+                if($student->sessionsLimite == 0){
+                           return response()->json([
+                           'message' => __('انتهت حصص هذا الطالب. يجب تحديث اشتراكه.'),
+                           ],501);
+                }
                 $packageStudent = $student->package;
                 $student->sessionsLimite = $packageStudent->sessionCount - $student->sessionsLimite ;
                 $student->save();
