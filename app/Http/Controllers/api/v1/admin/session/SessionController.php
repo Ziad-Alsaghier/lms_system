@@ -108,6 +108,8 @@ class SessionController extends Controller
         $data = $request->validated();
         // URL : http://localhost/lms_system/public/api/v1/admin/session/{id}
         $session = $this->sessionClass->find($id);
+
+        
         if (!$session) {
             return response()->json([
                 'status' => 'error',

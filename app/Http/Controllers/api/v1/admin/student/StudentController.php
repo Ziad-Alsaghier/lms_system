@@ -7,6 +7,7 @@ use App\Http\Requests\api\v1\admin\student\StoreRequest;
 use App\Http\Requests\api\v1\admin\student\UpdateReques;
 use App\Http\Resources\api\v1\admin\StudentResource;
 use App\Http\Resources\api\v1\admin\UserResource;
+use App\Models\Package as ModelsPackage;
 use App\Models\User;
 use App\services\Image;
 use App\services\Package;
@@ -19,6 +20,7 @@ class StudentController extends Controller
 
     public function __construct(
         private User $user,
+        private ModelsPackage $modelsPackage,
     ) {}
     use Image,Package;
     // This Function For Create Student
@@ -54,6 +56,12 @@ class StudentController extends Controller
         // URL : http://localhost/lms_system/public/api/v1/admin/sitteng/teacher/{id}
         $data = $request->validated();
 
+              if (isset($data['package_id'])) {
+                $package = $this->modelsPackage->find($data['package_id']);
+                $user->package_id = $package->id;
+                $user->sessionsLimite = $package->sessionCount;
+                $user->save();
+            }
         if (!$user && $user->role != 'teacher') {
             return response()->json([
                 'status' => 'error',
