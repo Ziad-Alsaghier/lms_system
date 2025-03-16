@@ -54,6 +54,12 @@ class SessionController extends Controller
             }
             if (isset($data['package_id'])) {
                 $package = $this->package->find($data['package_id']);
+                if (!$package) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Package Selected Not Found'
+                    ],404);
+                }
                 $student->package_id = $package->id;
                 $student->sessionsLimite = $package->sessionCount;
                 $student->save();

@@ -20,14 +20,14 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->when($this->role === 'teacher', $this->email),
             'sessions' => $this->when($this->role === 'teacher', $this->teacherSessions),
-            'sessionEnded' => $this->when($this->role === 'teacher', $this?->countTeacherSessionsEnded()),
             'avatar' => $this->getAvatarUrl($this->avatar),
             'role' => $this->role,
             'phone' => $this->phone,
             'address' => $this->address,
             'category' => $this->category,
             'status' => $this->status,
-            'sessionCount' => $this->role == 'student' ? $this->studentSessions->count() : $this->teacherSessions->count(),
+            'sessionCount' => $this->role == 'student' ? $this->studentSessionsEnded->count() :
+            $this->countTeacherSessionsEnded->count(),
             'created_at' => $this->created_at?->format('Y-m-d'),
             'updated_at' => $this->updated_at?->format('Y-m-d'),
         ], $this->role === 'student' ? [
