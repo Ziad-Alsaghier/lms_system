@@ -43,4 +43,6 @@ return Application::configure(basePath: dirname(__DIR__))
         //
         SessionClass::observe(SetBackageObserver::class);
         
-    })->create();
+    })
+    
+    ->create();
